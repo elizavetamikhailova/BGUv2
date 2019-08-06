@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/userProductFragment">
+    <fragment android:id="@+id/categoryFragment" android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.add_food.CategoryFragment"
+              android:label="fragment_category" tools:layout="@layout/fragment_category">
+        <action android:id="@+id/action_categoryFragment_to_productFragment" app:destination="@id/productFragment"/>
+    </fragment>
+    <fragment android:id="@+id/productFragment" android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.add_food.ProductFragment"
+              android:label="fragment_product" tools:layout="@layout/fragment_product">
+        <action android:id="@+id/action_productFragment_to_weightFragment" app:destination="@id/weightFragment"/>
+        <argument android:name="category" app:argType="project.elizavetamikhailova.bguv2.view.uimodels.Category"/>
+    </fragment>
+    <fragment android:id="@+id/weightFragment" android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.add_food.WeightFragment"
+              android:label="fragment_weight" tools:layout="@layout/fragment_weight">
+        <action android:id="@+id/action_weightFragment_to_userProductFragment"
+                app:destination="@id/userProductFragment"/>
+        <argument android:name="product" app:argType="project.elizavetamikhailova.bguv2.view.uimodels.Product"/>
+    </fragment>
+
+    <fragment android:id="@+id/userProductFragment" android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.add_food.UserProductFragment"
+              android:label="fragment_user_product" tools:layout="@layout/fragment_user_product">
+    </fragment>
+    <action android:id="@+id/action_global_categoryFragment" app:destination="@id/categoryFragment"/>
+    <fragment android:id="@+id/statisticFragment"
+              android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.statistic.StatisticFragment"
+              android:label="StatisticFragment"/>
+    <fragment android:id="@+id/weekStatisticFragment"
+              android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.statistic.WeekStatisticFragment"
+              android:label="fragment_week_statistic" tools:layout="@layout/fragment_week_statistic"/>
+    <fragment android:id="@+id/monthStatisticFragment"
+              android:name="project.elizavetamikhailova.bguv2.view.ui.fragments.statistic.MonthStatisticFragment"
+              android:label="fragment_month_statistic" tools:layout="@layout/fragment_month_statistic"/>
+    <action android:id="@+id/action_global_monthStatisticFragment" app:destination="@id/monthStatisticFragment"/>
+    <action android:id="@+id/action_global_statisticFragment" app:destination="@id/statisticFragment"/>
+    <action android:id="@+id/action_global_weekStatisticFragment" app:destination="@id/weekStatisticFragment"/>
+</navigation>

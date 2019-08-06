@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="project.elizavetamikhailova.bguv2.view.ui.view_models.statistic.WeekStatisticViewModel"
+        />
+        <variable name="user" type="project.elizavetamikhailova.bguv2.view.uimodels.User"/>
+    </data>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+
+        <TextView
+                android:id="@+id/textView44"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/week_statistic"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/norm2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@{Integer.toString(user.normOfKcals)}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                        android:id="@+id/view"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/kcal"
+                        app:layout_constraintBottom_toBottomOf="@+id/norm2"
+                        app:layout_constraintStart_toEndOf="@id/norm2"
+                        app:layout_constraintTop_toTopOf="@+id/norm2" />
+
+                <View
+                        android:id="@+id/prots"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/yellow_rounded_rectangle"
+                        app:layout_constraintBottom_toBottomOf="@+id/view"
+                        app:layout_constraintStart_toEndOf="@id/view"
+                        app:layout_constraintTop_toTopOf="@+id/view" />
+
+                <TextView
+                        android:id="@+id/prots_title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/prots"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/prots"
+                        app:layout_constraintStart_toEndOf="@id/prots"
+                        app:layout_constraintTop_toTopOf="@+id/prots" />
+
+                <View
+                        android:id="@+id/fats"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/blue_rounded_rectangle"
+                        app:layout_constraintBottom_toBottomOf="@+id/prots_title1"
+                        app:layout_constraintStart_toEndOf="@id/prots_title1"
+                        app:layout_constraintTop_toTopOf="@+id/prots_title1" />
+
+                <TextView
+                        android:id="@+id/fats_title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/fats"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/fats"
+                        app:layout_constraintStart_toEndOf="@id/fats"
+                        app:layout_constraintTop_toTopOf="@+id/fats" />
+
+                <View
+                        android:id="@+id/carbs"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/pink_rounded_rectangle"
+                        app:layout_constraintBottom_toBottomOf="@+id/fats_title1"
+                        app:layout_constraintStart_toEndOf="@id/fats_title1"
+                        app:layout_constraintTop_toTopOf="@+id/fats_title1" />
+
+                <TextView
+                        android:id="@+id/carbs_title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/carbs"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/carbs"
+                        app:layout_constraintStart_toEndOf="@id/carbs"
+                        app:layout_constraintTop_toTopOf="@+id/carbs" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/norm2">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                <View
+                        android:id="@+id/def"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/min"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/def_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="Недобор"
+                        android:textAlignment="viewStart"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/def"
+                        app:layout_constraintStart_toEndOf="@id/def"
+                        app:layout_constraintTop_toTopOf="@+id/def" />
+
+                <View
+                        android:id="@+id/good"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/ok"
+                        app:layout_constraintBottom_toBottomOf="@+id/def_title"
+                        app:layout_constraintStart_toEndOf="@id/def_title"
+                        app:layout_constraintTop_toTopOf="@+id/def_title" />
+
+                <TextView
+                        android:id="@+id/good_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="Норма"
+                        android:textAlignment="viewStart"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@id/good"
+                        app:layout_constraintStart_toEndOf="@id/good"
+                        app:layout_constraintTop_toTopOf="@+id/good"/>
+
+                <View
+                        android:id="@+id/max"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/big_attention"
+                        app:layout_constraintBottom_toBottomOf="@+id/good_title"
+                        app:layout_constraintStart_toEndOf="@id/good_title"
+                        app:layout_constraintTop_toTopOf="@+id/good_title" />
+
+                <TextView
+                        android:id="@+id/max_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="Превышение"
+                        android:textAlignment="viewStart"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/max"
+                        app:layout_constraintStart_toEndOf="@id/max"
+                        app:layout_constraintTop_toTopOf="@+id/max" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/line" />
+    </LinearLayout>
+</layout>

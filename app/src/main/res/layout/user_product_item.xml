@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="UserProductBinding">
+
+        <import type="android.view.View" />
+
+        <variable
+                name="product"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.UserProduct"/>
+    </data>
+    <LinearLayout
+                  android:orientation="vertical"
+                  android:id="@+id/constraintLayoutMain"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:layout_marginTop="4dp"
+                  android:layout_marginBottom="6dp"
+                  android:layout_marginEnd="8dp"
+                  android:background="@drawable/mint_rectangle"
+                  android:elevation="3dp">
+
+        <TextView
+                android:id="@+id/name"
+                android:text="@{product.product.title}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        <View
+                android:id="@+id/line20"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/line" />
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                    android:id="@+id/constraintLayout8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/weight_g"
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:textAlignment="center"
+                        android:textSize="15sp" />
+
+                <TextView
+                        android:id="@+id/weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:fontFamily="@font/montserrata_iternates_regular"
+                        android:text="@{product.weight}"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+
+            </LinearLayout>
+            <View
+                    android:id="@+id/line21"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/line" />
+            <LinearLayout
+                    android:id="@+id/constraintLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/kkals"
+                        android:textSize="15sp" />
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/kkals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/montserrata_iternates_regular"
+                        android:text="@{product.product.kcals}"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/line" />
+
+        <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:orientation="horizontal">
+
+
+            <LinearLayout
+                    android:id="@+id/constraintLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/prots"
+                        android:textSize="15sp" />
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/prots"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/montserrata_iternates_regular"
+                        android:text="@{product.product.prots}"
+                        android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <View
+                    android:id="@+id/line23"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/line" />
+
+
+            <LinearLayout
+                    android:id="@+id/constraintLayout6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/fats"
+                        android:textSize="15sp" />
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/fats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/montserrata_iternates_regular"
+                        android:text="@{product.product.fats}"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+            </LinearLayout>
+
+            <View
+                    android:id="@+id/line24"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/line" />
+
+            <LinearLayout
+                    android:id="@+id/constraintLayout7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrata_iternates_medium"
+                        android:text="@string/carbs"
+                        android:textSize="15sp" />
+
+                <TextView
+                        android:textColor="@color/colorPrimaryForProgress"
+                        android:id="@+id/carbs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/montserrata_iternates_regular"
+                        android:text="@{product.product.carbs}"
+                        android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>

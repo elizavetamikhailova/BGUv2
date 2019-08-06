@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FragmentStatisticBinding">
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="protsStatistic"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.DayStatistic"/>
+        <variable
+                name="fatsStatistic"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.DayStatistic"/>
+        <variable
+                name="carbsStatistic"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.DayStatistic"/>
+        <variable
+                name="nutrientType"
+                type="project.elizavetamikhailova.bguv2.helpers.enums.NutrientType"/>
+        <variable name="kcalsStatistic"
+                  type="project.elizavetamikhailova.bguv2.view.uimodels.KcalsStatistic"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".view.ui.fragments.statistic.StatisticFragment">
+
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:layout_marginTop="8dp"
+                      android:id="@+id/chipGroup">
+
+            <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="@string/week_statistic" android:id="@+id/week"/>
+
+            <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="@string/month_statistic" android:id="@+id/month"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+            <View
+                    android:id="@+id/statistic1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/statistic1"/>
+
+            <View
+                    android:id="@+id/statistic2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/statistic2"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/textView43"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/bgu_whole_day"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainLayout"
+                android:orientation="vertical">
+
+            <RelativeLayout
+                    android:clipToPadding="false"
+                    android:background="@drawable/green_horizontal_progress_bar"
+                    android:elevation="2dp"
+                    android:id="@+id/relativeLayout0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+            >
+
+                <ProgressBar
+                        android:id="@+id/progressBarKcals"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:progress="@{kcalsStatistic.progress}"
+                        progressColor="@{kcalsStatistic.isNormExceed}"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:foregroundGravity="right"
+                >
+
+                    <View
+                            android:id="@+id/kcalsView"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            nutrientType="@{nutrientType.KCALS}"
+                            isNormExceed="@{kcalsStatistic.isNormExceed}"
+                            app:layout_constraintBottom_toBottomOf="@+id/kkals_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/kkals_title"/>
+
+                    <TextView
+                            android:id="@+id/kkals_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/montserrata_iternates_medium"
+                            android:text="@string/kkals"
+                            textColor="@{kcalsStatistic.isNormExceed}"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/kcalsView"
+                            app:layout_constraintTop_toTopOf="@+id/constraintLayout"/>
+
+                    <TextView
+                            android:id="@+id/kkals_amount"
+                            android:text="@{Integer.toString(kcalsStatistic.summary)}"
+                            textColor="@{kcalsStatistic.isNormExceed}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/montserrata_iternates_regular"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView0"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                            android:text="/"
+                            textColor="@{kcalsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView0" app:layout_constraintEnd_toStartOf="@+id/normOfKcals"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+                    <TextView
+                            textColor="@{kcalsStatistic.isNormExceed}"
+                            android:id="@+id/normOfKcals"
+                            android:text="@{Integer.toString(kcalsStatistic.normOfKcals)}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:clipToPadding="false"
+                    android:background="@drawable/green_horizontal_progress_bar"
+                    android:elevation="2dp"
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout0"
+            >
+
+                <ProgressBar
+                        android:id="@+id/progressBarProts"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:progress="@{protsStatistic.progress}"
+                        progressColor="@{protsStatistic.isNormExceed}"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp">
+
+                    <View
+                            android:id="@+id/protsView"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            nutrientType="@{nutrientType.PROTS}"
+                            isNormExceed="@{protsStatistic.isNormExceed}"
+                            app:layout_constraintBottom_toBottomOf="@+id/prots_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/prots_title"/>
+
+                    <TextView
+                            android:id="@+id/prots_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/montserrata_iternates_medium"
+                            android:text="@string/prots"
+                            textColor="@{protsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/protsView"
+                            app:layout_constraintTop_toTopOf="@+id/constraintLayout1"/>
+
+                    <TextView
+                            android:id="@+id/protsSummary"
+                            textColor="@{protsStatistic.isNormExceed}"
+                            android:text="@{Integer.toString(protsStatistic.nutrientSummary)}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/montserrata_iternates_regular"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView"/>
+                    <TextView
+                            android:text="/"
+                            textColor="@{protsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView" app:layout_constraintEnd_toStartOf="@+id/normOfProts"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+                    <TextView
+                            textColor="@{protsStatistic.isNormExceed}"
+                            android:id="@+id/normOfProts"
+                            android:text="@{Integer.toString(protsStatistic.normOfNutrientInt)}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:clipToPadding="false"
+                    android:background="@drawable/green_horizontal_progress_bar"
+                    android:elevation="2dp"
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+                <ProgressBar
+                        android:id="@+id/progressBarFats"
+                        android:progress="@{fatsStatistic.progress}"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        progressColor="@{fatsStatistic.isNormExceed}"
+                />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp">
+
+                    <View
+                            android:id="@+id/fatsView"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            nutrientType="@{nutrientType.FATS}"
+                            isNormExceed="@{fatsStatistic.isNormExceed}"
+                            app:layout_constraintBottom_toBottomOf="@+id/fats_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/fats_title"/>
+
+                    <TextView
+                            android:id="@+id/fats_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/montserrata_iternates_medium"
+                            android:text="@string/fats"
+                            textColor="@{fatsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/fatsView"
+                            app:layout_constraintTop_toTopOf="@+id/constraintLayout2"/>
+
+                    <TextView
+                            android:id="@+id/fatsSummary"
+                            textColor="@{fatsStatistic.isNormExceed}"
+                            android:text="@{Integer.toString(fatsStatistic.nutrientSummary)}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/montserrata_iternates_regular"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView1"/>
+                    <TextView
+                            android:text="/"
+                            textColor="@{fatsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1" app:layout_constraintEnd_toStartOf="@+id/normOfFats"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+                    <TextView
+                            android:id="@+id/normOfFats"
+                            textColor="@{fatsStatistic.isNormExceed}"
+                            android:text="@{Integer.toString(fatsStatistic.normOfNutrientInt)}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:clipToPadding="false"
+                    android:background="@drawable/green_horizontal_progress_bar"
+                    android:elevation="2dp"
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout1"
+            >
+
+                <ProgressBar
+                        android:progress="@{carbsStatistic.progress}"
+                        android:id="@+id/progressBarCarbs"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        progressColor="@{carbsStatistic.isNormExceed}"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp">
+
+                    <View
+                            android:id="@+id/carbsView"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            nutrientType="@{nutrientType.CARBS}"
+                            isNormExceed="@{carbsStatistic.isNormExceed}"
+                            app:layout_constraintBottom_toBottomOf="@+id/carbs_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/carbs_title"/>
+
+                    <TextView
+                            android:id="@+id/carbs_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/montserrata_iternates_medium"
+                            android:text="@string/carbs"
+                            textColor="@{carbsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/carbsView"
+                            app:layout_constraintTop_toTopOf="@+id/constraintLayout3"/>
+
+                    <TextView
+                            android:id="@+id/carbsSummary"
+                            textColor="@{carbsStatistic.isNormExceed}"
+                            android:text="@{Integer.toString(carbsStatistic.nutrientSummary)}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/montserrata_iternates_regular"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView2"/>
+                    <TextView
+                            android:text="/"
+                            textColor="@{carbsStatistic.isNormExceed}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView2" app:layout_constraintEnd_toStartOf="@+id/normOfCarbs"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+                    <TextView
+                            android:id="@+id/normOfCarbs"
+                            textColor="@{carbsStatistic.isNormExceed}"
+                            android:text="@{Integer.toString(carbsStatistic.normOfNutrientInt)}"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:background="@drawable/line" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textView44"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="@font/montserrat_medium"-->
+        <!--android:text="@string/week_statistic"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="18sp" />-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/norm2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="TextView"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/view"-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:background="@drawable/kcal"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/norm2"-->
+        <!--app:layout_constraintStart_toEndOf="@id/norm2"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/norm2" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/prots"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/yellow_rounded_rectangle"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/view"-->
+        <!--app:layout_constraintStart_toEndOf="@id/view"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/view" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/prots_title1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/prots"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/prots"-->
+        <!--app:layout_constraintStart_toEndOf="@id/prots"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/prots" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/fats"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/blue_rounded_rectangle"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/prots_title1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/prots_title1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/prots_title1" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/fats_title1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/fats"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/fats"-->
+        <!--app:layout_constraintStart_toEndOf="@id/fats"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/fats" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/carbs"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/pink_rounded_rectangle"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/fats_title1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/fats_title1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/fats_title1" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/carbs_title1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/carbs"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/carbs"-->
+        <!--app:layout_constraintStart_toEndOf="@id/carbs"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/carbs" />-->
+
+        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginBottom="24dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/norm2">-->
+
+        <!--</androidx.recyclerview.widget.RecyclerView>-->
+
+        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+
+
+        <!--<View-->
+        <!--android:id="@+id/def"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/min"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/def_title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="Недобор"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/def"-->
+        <!--app:layout_constraintStart_toEndOf="@id/def"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/def" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/good"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/ok"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/def_title"-->
+        <!--app:layout_constraintStart_toEndOf="@id/def_title"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/def_title" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/good_title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="Норма"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@id/good"-->
+        <!--app:layout_constraintStart_toEndOf="@id/good"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/good"/>-->
+
+        <!--<View-->
+        <!--android:id="@+id/max"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/big_attention"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/good_title"-->
+        <!--app:layout_constraintStart_toEndOf="@id/good_title"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/good_title" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/max_title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="Превышение"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/max"-->
+        <!--app:layout_constraintStart_toEndOf="@id/max"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/max" />-->
+
+        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:background="@drawable/line" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textView45"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="@font/montserrat_medium"-->
+        <!--android:text="@string/month_statistic"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="18sp" />-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/norm3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="TextView"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/view1"-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:background="@drawable/kcal"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/norm3"-->
+        <!--app:layout_constraintStart_toEndOf="@id/norm3"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/norm3" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/prots2"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/yellow_rounded_rectangle"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/view1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/view1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/view1" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/prots_title2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/prots"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/prots2"-->
+        <!--app:layout_constraintStart_toEndOf="@id/prots2"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/prots2" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/fats2"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/blue_rounded_rectangle"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/prots_title2"-->
+        <!--app:layout_constraintStart_toEndOf="@id/prots_title2"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/prots_title2" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/fats_title2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/fats"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/fats2"-->
+        <!--app:layout_constraintStart_toEndOf="@id/fats2"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/fats2" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/carbs2"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/pink_rounded_rectangle"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/fats_title2"-->
+        <!--app:layout_constraintStart_toEndOf="@id/fats_title2"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/fats_title2" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/carbs_title2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/carbs"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/carbs2"-->
+        <!--app:layout_constraintStart_toEndOf="@id/carbs2"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/carbs2" />-->
+
+        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerView1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/norm2">-->
+
+        <!--</androidx.recyclerview.widget.RecyclerView>-->
+
+        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="16dp">-->
+
+
+        <!--<View-->
+        <!--android:id="@+id/def1"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/min"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/def_title1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="Недобор"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/def1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/def1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/def1" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/good1"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/ok"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/def_title1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/def_title1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/def_title1" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/good_title1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="Норма"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@id/good1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/good1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/good1"/>-->
+
+        <!--<View-->
+        <!--android:id="@+id/max1"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:background="@drawable/big_attention"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/good_title1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/good_title1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/good_title1" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/max_title1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="Превышение"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/max1"-->
+        <!--app:layout_constraintStart_toEndOf="@id/max1"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/max1" />-->
+
+        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+        <!--</LinearLayout>-->
+
+        <!--</LinearLayout>-->

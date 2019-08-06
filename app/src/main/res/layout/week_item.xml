@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="WeekItemBinding">
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="protsStatistic"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.DayStatistic"/>
+        <variable
+                name="fatsStatistic"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.DayStatistic"/>
+        <variable
+                name="carbsStatistic"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.DayStatistic"/>
+        <variable
+                name="nutrientType"
+                type="project.elizavetamikhailova.bguv2.helpers.enums.NutrientType"/>
+        <variable name="kcalsStatistic"
+                  type="project.elizavetamikhailova.bguv2.view.uimodels.KcalsStatistic"/>
+    </data>
+
+    <LinearLayout
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:background="@drawable/green_horizontal_progress_bar"
+                android:elevation="2dp"
+                android:clipToPadding="false"
+                android:id="@+id/relativeLayout"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:layout_marginStart="3dp">
+
+            <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="350dp"
+                    android:layout_alignBottom="@id/constraintLayout"
+                    android:layout_centerInParent="true"
+                    android:progress="@{kcalsStatistic.progress}"
+                    android:progressDrawable="@drawable/green_vertical_progress_bar"/>
+
+
+            <LinearLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="350dp"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                    <View
+                            android:id="@+id/attentionProts"
+                            android:layout_width="10dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/attention"
+                            android:visibility="@{protsStatistic.isNormExceed ? View.VISIBLE : View.GONE}"/>
+
+                    <ProgressBar
+                            android:id="@+id/progressBar11"
+                            android:progress="@{protsStatistic.progress}"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:progressDrawable="@drawable/yellow_vertical_progress_bar"
+                    />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                    <View
+                            android:id="@+id/attentionFats"
+                            android:layout_width="10dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/attention"
+                            android:visibility="@{fatsStatistic.isNormExceed ? View.VISIBLE : View.GONE}"/>
+
+                    <ProgressBar
+                            android:id="@+id/progressBar10"
+                            android:progress="@{fatsStatistic.progress}"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:progressDrawable="@drawable/blue_vertical_progress_bar"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                    <View
+                            android:id="@+id/attentionCarbs"
+                            android:layout_width="10dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/attention"
+                            android:visibility="@{carbsStatistic.isNormExceed ? View.VISIBLE : View.GONE}"/>
+
+                    <ProgressBar
+                            android:id="@+id/progressBar12"
+                            android:progress="@{carbsStatistic.progress}"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:progressDrawable="@drawable/pink_vertical_progress_bar"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:id="@+id/bottom_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <View
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/line"/>
+
+
+            <TextView
+                    android:id="@+id/day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/montserrata_iternates_medium"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp"/>
+
+            <View
+                    android:id="@+id/attention_kkals"
+                    android:layout_width="30dp"
+                    summary="@{kcalsStatistic.summary}"
+                    normOfKcals="@{kcalsStatistic.normOfKcals}"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/ok"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

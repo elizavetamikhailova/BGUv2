@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="project.elizavetamikhailova.bguv2.view.ui.view_models.add_food.WeightViewModel"
+        />
+
+        <variable
+                name="product"
+                type="project.elizavetamikhailova.bguv2.view.uimodels.Product"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraitLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".view.ui.fragments.add_food.WeightFragment">
+
+        <TextView
+                android:id="@+id/product_title"
+                android:text="@{product.title}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+                android:id="@+id/line0"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_title" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:fontFamily="@font/montserrata_iternates_medium"-->
+        <!--android:text="@string/weight_g"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/weightLayout"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/weightLayout" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/weightLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@id/title_weight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line0">
+
+            <EditText
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.updateValues(text)}"
+                    android:id="@+id/edit_query"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/montserrat_alternates_light"
+                    android:hint="Введите вес"
+                    android:inputType="number"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorAccent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+                android:id="@+id/title_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/montserrata_iternates_medium"
+                android:text="г"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/weightLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/weightLayout" />
+
+        <View
+                android:id="@+id/line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/submit" />
+
+        <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/relativeLayout4"
+                app:layout_constraintStart_toStartOf="@+id/line"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+            <ProgressBar
+                    android:id="@+id/progressBarProts"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/rounded_progress_bar_back"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/rounded_progress_bar" />
+
+            <TextView
+                    android:id="@+id/amountProts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@{product.prots}"
+                    android:textAlignment="center" />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/relativeLayout5"
+                app:layout_constraintStart_toEndOf="@+id/relativeLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+            <ProgressBar
+                    android:id="@+id/progressBarFats"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/rounded_progress_bar_back"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/rounded_progress_bar" />
+
+            <TextView
+                    android:id="@+id/amountFats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@{product.fats}"
+                    android:textAlignment="center" />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="@id/line"
+                app:layout_constraintStart_toEndOf="@id/relativeLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+            <ProgressBar
+                    android:id="@+id/progressBarCarbs"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/rounded_progress_bar_back"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/rounded_progress_bar" />
+
+            <TextView
+                    android:id="@+id/amountCarbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@{product.carbs}"
+                    android:textAlignment="center" />
+        </RelativeLayout>
+
+        <View
+                android:id="@+id/loss"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/prots"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout3"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
+
+        <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrata_iternates_medium"
+                android:text="@string/prots"
+                app:layout_constraintEnd_toEndOf="@+id/loss"
+                app:layout_constraintStart_toStartOf="@+id/loss"
+                app:layout_constraintTop_toBottomOf="@+id/loss" />
+
+        <View
+                android:id="@+id/fats"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/fats"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout4"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout4" />
+
+        <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrata_iternates_medium"
+                android:text="@string/fats"
+                app:layout_constraintEnd_toEndOf="@+id/fats"
+                app:layout_constraintStart_toStartOf="@+id/fats"
+                app:layout_constraintTop_toBottomOf="@+id/fats" />
+
+        <View
+                android:id="@+id/carbs"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/carbs"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout5"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout5"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout5" />
+
+        <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrata_iternates_medium"
+                android:text="@string/carbs"
+                app:layout_constraintEnd_toEndOf="@+id/carbs"
+                app:layout_constraintStart_toStartOf="@+id/carbs"
+                app:layout_constraintTop_toBottomOf="@+id/carbs" />
+
+        <Button
+                android:id="@+id/submit"
+                android:onClick="@{() -> viewModel.saveUserProduct()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/add"
+                app:layout_constraintBottom_toBottomOf="@+id/textView33"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+        <View
+                android:id="@+id/norm1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/kcal"
+                app:layout_constraintBottom_toBottomOf="@+id/textView33"
+                app:layout_constraintStart_toStartOf="@+id/weightLayout"
+                app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+        <TextView
+                android:id="@+id/kkals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/montserrata_iternates_medium"
+                android:text="@{product.kcals}"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/textView33"
+                app:layout_constraintStart_toEndOf="@+id/textView33"
+                app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+        <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrata_iternates_medium"
+                android:text="@string/kkals"
+                app:layout_constraintStart_toEndOf="@+id/norm1"
+                app:layout_constraintTop_toBottomOf="@+id/weightLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
